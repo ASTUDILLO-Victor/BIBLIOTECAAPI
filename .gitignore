@@ -1,0 +1,32 @@
+# Build results
+bin/
+obj/
+
+# Base de datos SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Variables de entorno sensibles
+appsettings.Development.json
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Publicación
+publish/
