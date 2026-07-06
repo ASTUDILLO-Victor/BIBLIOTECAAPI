@@ -1,0 +1,9 @@
+namespace BibliotecaApp.Domain.Entities;
+
+public class Permiso
+{
+    public int Id { get; set; }
+    public string Nombre { get; set; } = "";
+    public string Descripcion { get; set; } = "";
+    public List<RolPermiso> RolPermisos { get; set; } = new();
+}

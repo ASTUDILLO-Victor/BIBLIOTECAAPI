@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BibliotecaApp.API/BibliotecaApp.API.csproj" />
+  <Project Path="BibliotecaApp.Application/BibliotecaApp.Application.csproj" />
+  <Project Path="BibliotecaApp.Domain/BibliotecaApp.Domain.csproj" />
+  <Project Path="BibliotecaApp.Infrastructure/BibliotecaApp.Infrastructure.csproj" />
+</Solution>
