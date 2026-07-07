@@ -15,9 +15,11 @@ public class LibroResponseDTO
 {
     public int Id { get; set; }
     public string Titulo { get; set; } = "";
+    public string Descripcion { get; set; } = "";
     public string ISBN { get; set; } = "";
-    public DateTime DataPublicacao { get; set; }
-
+    public int AnioPublicacion { get; set; }
+    public int CopiasDisponibles { get; set; }
+    public string CategoriaNombre { get; set; } = "";
+    public List<string> Autores { get; set; } = new();
     public int TotalPrestamos { get; set; }
-    public int TotalAutores { get; set; }
 }
