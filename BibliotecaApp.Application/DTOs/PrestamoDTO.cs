@@ -4,6 +4,8 @@ namespace BibliotecaApp.Application.DTOs;
     public class PrestamoCreateDTO
     {
         public int LibroId { get; set; }  // ← solo esto
+        public int UsuarioId { get; set; } 
+        public DateTime FechaDevolucion { get; set; } 
     }
 
 public class PrestamoResponseDTO

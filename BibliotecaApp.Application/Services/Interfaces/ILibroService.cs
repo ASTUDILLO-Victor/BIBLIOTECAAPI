@@ -7,6 +7,6 @@ public interface ILibroService
     LibroResponseDTO Agregar(LibroCreateDTO dto);
     LibroResponseDTO ObtenerPorId(int id);
     List<LibroResponseDTO> ObtenerTodos();
-    void Actualizar(int id, LibroCreateDTO dto);
-    void Eliminar(int id);
+    LibroResponseDTO? Actualizar(int id, LibroCreateDTO dto);
+    bool Eliminar(int id);
 }

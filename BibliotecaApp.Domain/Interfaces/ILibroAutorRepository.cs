@@ -4,7 +4,10 @@ namespace BibliotecaApp.Domain.Interfaces;
 
 public interface ILibroAutorRepository
 {
-    void Agregar(LibroAutor libroAutor);
+    LibroAutor Agregar(LibroAutor libroAutor);
+
+    void Eliminar(LibroAutor libroAutor);
+
     void EliminarPorLibro(int libroId);
     List<LibroAutor> ObtenerPorLibro(int libroId);
     List<LibroAutor> ObtenerPorAutor(int autorId);

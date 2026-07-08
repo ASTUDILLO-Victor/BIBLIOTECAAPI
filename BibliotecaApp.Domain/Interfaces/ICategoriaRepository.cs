@@ -7,6 +7,6 @@ public interface ICategoriaRepository
     Categoria Agregar(Categoria categoria);
     Categoria? ObtenerPorId(int id);
     List<Categoria> ObtenerTodos();
-    void Actualizar(Categoria categoria);
+    Categoria Actualizar(Categoria categoria);
     void Eliminar(Categoria categoria);
 }

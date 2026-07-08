@@ -7,6 +7,6 @@ public interface ICategoriaService
     CategoriaResponseDTO Agregar(CategoriaCreateDTO dto);
     CategoriaResponseDTO ObtenerPorId(int id);
     List<CategoriaResponseDTO> ObtenerTodos();
-    void Actualizar(int id, CategoriaCreateDTO dto);
-    void Eliminar(int id);
+    CategoriaResponseDTO? Actualizar(int id, CategoriaCreateDTO dto);
+     bool Eliminar(int id);
 }
