@@ -10,15 +10,18 @@ public class PrestamoService : IPrestamoService
     private readonly IPrestamoRepository _prestamoRepository;
     private readonly ILibroRepository _libroRepository;
     private readonly IUsuarioRepository _usuarioRepository;
+    private readonly INotificadorService _notificadorService;
 
     public PrestamoService(
         IPrestamoRepository prestamoRepository,
         ILibroRepository libroRepository,
-        IUsuarioRepository usuarioRepository)
+        IUsuarioRepository usuarioRepository,
+        INotificadorService notificadorService)
     {
         _prestamoRepository = prestamoRepository;
         _libroRepository = libroRepository;
         _usuarioRepository = usuarioRepository;
+        _notificadorService = notificadorService;
     }
 
     public PrestamoResponseDTO Agregar(PrestamoCreateDTO dto, int usuarioId)
@@ -70,7 +73,7 @@ public class PrestamoService : IPrestamoService
             .ToList();
     }
 
-    public PrestamoResponseDTO? Devolver(int id)
+    public async Task<PrestamoResponseDTO?> Devolver(int id)
     {
         var prestamo = _prestamoRepository.ObtenerPorId(id);
         if (prestamo == null) return null;
@@ -87,6 +90,9 @@ public class PrestamoService : IPrestamoService
         {
             libro.CopiasDisponibles++;
             _libroRepository.Actualizar(libro);
+
+            //notificar al usuario que el libro ha sido devuelto
+            await  _notificadorService.NotificarLibroDisponible(libro.Id, libro.Titulo);
         }
 
         return MapearPrestamo(_prestamoRepository.ObtenerPorId(prestamo.Id)!);

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "BCrypt.Net-Next/4.2.0": {
@@ -210,6 +210,15 @@
           "lib/net10.0/Microsoft.IdentityModel.Tokens.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Otp.NET/1.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Otp.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Otp.NET.dll": {}
         }
       },
       "System.IdentityModel.Tokens.Jwt/8.19.1": {
@@ -627,6 +636,28 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Otp.NET/1.4.1": {
+      "sha512": "UXjZ80T6BfVACJWmEcz4UFZ93hwX3STKojKvVpPk3qUhubjnLwIiZMsI4Hh91HhYxC0JlatNdNrVK2wkv4O9/Q==",
+      "type": "package",
+      "path": "otp.net/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "icon.png",
+        "lib/net10.0/Otp.NET.dll",
+        "lib/net461/Otp.NET.dll",
+        "lib/net5.0/Otp.NET.dll",
+        "lib/net6.0/Otp.NET.dll",
+        "lib/net7.0/Otp.NET.dll",
+        "lib/net8.0/Otp.NET.dll",
+        "lib/net9.0/Otp.NET.dll",
+        "lib/netstandard2.0/Otp.NET.dll",
+        "otp.net.1.4.1.nupkg.sha512",
+        "otp.net.nuspec"
+      ]
+    },
     "System.IdentityModel.Tokens.Jwt/8.19.1": {
       "sha512": "2VHcRtT95GAcW1E3aVBLvL2rAAMxKHXKMXKXFyWzwgkdFXZPMMvP8tVOfnRydL4vTr1RirNuGC6T8VSEF2YsPQ==",
       "type": "package",
@@ -665,36 +696,45 @@
       "BibliotecaApp.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.9",
       "Microsoft.Extensions.Configuration.Abstractions >= 10.0.9",
+      "Otp.NET >= 1.4.1",
       "System.IdentityModel.Tokens.Jwt >= 8.19.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vastudillo\\.nuget\\packages\\": {}
+    "C:\\Users\\vastudillo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vastudillo\\Desktop\\.net\\BibliotecaApp\\BibliotecaApp.Application\\BibliotecaApp.Application.csproj",
+      "projectUniqueName": "C:\\Users\\vastudillo\\Documents\\Para Revisar y Respaldar\\.net\\BibliotecaApp\\BibliotecaApp.Application\\BibliotecaApp.Application.csproj",
       "projectName": "BibliotecaApp.Application",
-      "projectPath": "C:\\Users\\vastudillo\\Desktop\\.net\\BibliotecaApp\\BibliotecaApp.Application\\BibliotecaApp.Application.csproj",
+      "projectPath": "C:\\Users\\vastudillo\\Documents\\Para Revisar y Respaldar\\.net\\BibliotecaApp\\BibliotecaApp.Application\\BibliotecaApp.Application.csproj",
       "packagesPath": "C:\\Users\\vastudillo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vastudillo\\Desktop\\.net\\BibliotecaApp\\BibliotecaApp.Application\\obj\\",
+      "outputPath": "C:\\Users\\vastudillo\\Documents\\Para Revisar y Respaldar\\.net\\BibliotecaApp\\BibliotecaApp.Application\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\vastudillo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\vastudillo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\vastudillo\\Desktop\\.net\\BibliotecaApp\\BibliotecaApp.Domain\\BibliotecaApp.Domain.csproj": {
-              "projectPath": "C:\\Users\\vastudillo\\Desktop\\.net\\BibliotecaApp\\BibliotecaApp.Domain\\BibliotecaApp.Domain.csproj"
+            "C:\\Users\\vastudillo\\Documents\\Para Revisar y Respaldar\\.net\\BibliotecaApp\\BibliotecaApp.Domain\\BibliotecaApp.Domain.csproj": {
+              "projectPath": "C:\\Users\\vastudillo\\Documents\\Para Revisar y Respaldar\\.net\\BibliotecaApp\\BibliotecaApp.Domain\\BibliotecaApp.Domain.csproj"
             }
           }
         }
@@ -709,10 +749,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "BCrypt.Net-Next": {
@@ -726,6 +767,10 @@
           "Microsoft.Extensions.Configuration.Abstractions": {
             "target": "Package",
             "version": "[10.0.9, )"
+          },
+          "Otp.NET": {
+            "target": "Package",
+            "version": "[1.4.1, )"
           },
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
@@ -748,7 +793,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

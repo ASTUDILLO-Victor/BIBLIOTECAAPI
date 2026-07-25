@@ -30,3 +30,5 @@ appsettings.Development.json
 
 # Publicación
 publish/
+
+.env

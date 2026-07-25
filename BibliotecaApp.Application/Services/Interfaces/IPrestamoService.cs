@@ -8,5 +8,5 @@ public interface IPrestamoService
     PrestamoResponseDTO? ObtenerPorId(int id);
     List<PrestamoResponseDTO> ObtenerTodos();
     List<PrestamoResponseDTO> ObtenerPorUsuario(int usuarioId);
-    PrestamoResponseDTO? Devolver(int id);
+    Task<PrestamoResponseDTO?> Devolver(int id);
 }

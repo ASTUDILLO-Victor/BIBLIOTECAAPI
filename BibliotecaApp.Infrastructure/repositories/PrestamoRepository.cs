@@ -38,7 +38,7 @@ public class PrestamoRepository : IPrestamoRepository
 
     public int ContarPrestamosActivos(int usuarioId)
     {
-        return _context.Prestamos.Count(p => p.UsuarioId == usuarioId && p.FechaDevolucion == null);
+        return _context.Prestamos.Count(p => p.UsuarioId == usuarioId && p.Estado == "Activo");
     }
 
     public void Actualizar(Prestamo prestamo)

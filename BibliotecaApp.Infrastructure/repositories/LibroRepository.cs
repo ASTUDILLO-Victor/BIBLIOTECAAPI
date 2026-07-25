@@ -28,7 +28,7 @@ public class LibroRepository : ILibroRepository
 
     public List<Libro> ObtenerTodos()
     {
-        return _context.Libros.Include(l => l.Categoria).Include(l => l.LibroAutores).ThenInclude(la => la.Autor).ToList();
+        return _context.Libros.Include(l => l.Categoria).Include(l => l.LibroAutores).ThenInclude(la => la.Autor).AsNoTracking().ToList();
     }
 
     public List<Libro> ObtenerPorCategoria(int categoriaId)

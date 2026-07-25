@@ -9,17 +9,24 @@ public class LibroService : ILibroService
      private readonly ILibroRepository _libroRepository;
      private readonly IAutorRepository _autorRepository;
      private readonly ILibroAutorRepository _libroAutorRepository;
-     public LibroService(
+     private readonly INotificadorService _notificadorService;
+     private readonly ICacheService _cacheService;
+
+    public LibroService(
         ILibroRepository libroRepository,
         IAutorRepository autorRepository,
-        ILibroAutorRepository libroAutorRepository)
+        ILibroAutorRepository libroAutorRepository,
+        INotificadorService notificadorService,
+        ICacheService cacheService)
     {
         _libroRepository = libroRepository;
         _autorRepository = autorRepository;
         _libroAutorRepository = libroAutorRepository;
+        _notificadorService = notificadorService;
+        _cacheService = cacheService;
     }
 
-    public LibroResponseDTO Agregar(LibroCreateDTO dto)
+    public async Task<LibroResponseDTO> Agregar(LibroCreateDTO dto)
     {
         var libro = new Libro
         {
@@ -46,6 +53,8 @@ public class LibroService : ILibroService
                 _libroAutorRepository.Agregar(libroAutor);
             }
         }
+        await _notificadorService.NotificarLibroNuevo(libro.Id, libro.Titulo);
+        await _cacheService.EliminarAsync("libros_todos");
 
         return MapearLibro(libro);
     }
@@ -60,10 +69,31 @@ public class LibroService : ILibroService
         return MapearLibro(libro);
     }
 
-    public List<LibroResponseDTO> ObtenerTodos()
+    /*public List<LibroResponseDTO> ObtenerTodos()
     {
         var libros = _libroRepository.ObtenerTodos();
         return libros.Select(MapearLibro).ToList();
+    }*/
+    public async Task<List<LibroResponseDTO>> ObtenerTodos()
+    {
+        const string cacheKey = "libros_todos";
+
+        // 1. Intentar obtener del caché primero
+        var librosCacheados = await _cacheService.ObtenerAsync<List<LibroResponseDTO>>(cacheKey);
+        if (librosCacheados != null)
+        {
+            return librosCacheados;
+        }
+
+        // 2. Si no está en caché, consultar la BD
+        var libros = _libroRepository.ObtenerTodos()
+            .Select(MapearLibro)
+            .ToList();
+
+        // 3. Guardar en caché para la próxima vez
+        await _cacheService.GuardarAsync(cacheKey, libros, TimeSpan.FromMinutes(5));
+
+        return libros;
     }
 
     public LibroResponseDTO? Actualizar(int id, LibroCreateDTO dto)

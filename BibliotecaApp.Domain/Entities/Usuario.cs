@@ -14,4 +14,8 @@ public class Usuario
     public List<UsuarioRol> UsuarioRoles { get; set; } = new();
     public List<RefreshToken> RefreshTokens { get; set; } = new();
     public List<Prestamo> Prestamos { get; set; } = new();
+
+    // Nuevos campos para 2FA
+    public string? TwoFactorSecret { get; set; }
+    public bool TwoFactorEnabled { get; set; } = false;
 }

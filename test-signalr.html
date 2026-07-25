@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test SignalR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+</head>
+<body>
+    <h1>Escuchando notificaciones...</h1>
+    <div id="mensajes"></div>
+
+    <script>const connection = new signalR.HubConnectionBuilder()
+            .withUrl("http://localhost:9090/hubs/notificaciones")
+            .build();
+
+        connection.on("LibroDisponible", (data) => {
+            const div = document.getElementById("mensajes");
+            div.innerHTML += `<p>📚 ${data.mensaje}</p>`;
+        });
+
+        connection.start()
+            .then(() => console.log("Conectado a SignalR"))
+            .catch(err => console.error("Error de conexión:", err));</script>
+</body>
+</html>

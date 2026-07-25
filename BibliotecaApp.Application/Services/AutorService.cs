@@ -19,7 +19,7 @@ public class AutorService : IAutorService
         {
             Nombre = dto.Nombre,
             Nacionalidad = dto.Nacionalidad,
-            FechaNacimiento = dto.FechaNacimiento
+            FechaNacimiento = DateTime.SpecifyKind(dto.FechaNacimiento, DateTimeKind.Utc)
         };
 
         var creado = _autorRepository.Agregar(autor);
